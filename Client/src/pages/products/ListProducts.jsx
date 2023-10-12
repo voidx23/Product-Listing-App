@@ -6,13 +6,11 @@ function ProductListing() {
     const [totalElectronicsProducts, setTotalElectronicsProducts] = useState(0);
 
     useEffect(() => {
-        // Fetch category and product data from the server using Axios
-        axios.get('http://localhost:5000/api/product/getData') 
+        axios.get('https://product-listing-app.onrender.com/api/product/getData') 
             .then(response => {
                 setCategories(response.data.category);
                 console.log(response.data)
 
-                // Calculate the total number of products under "Electronics" category and its children
                 const electronicsCategory = response.data.category.find(category => category.name === 'Electronics');
                 if (electronicsCategory) {
                     const totalProducts = countProductsInCategory(electronicsCategory, response.data.products);
@@ -24,7 +22,6 @@ function ProductListing() {
             });
     }, []);
 
-    // Recursive function to count products in a category and its children
     const countProductsInCategory = (category, products) => {
         let totalCount = 0;
         if (category.products) {

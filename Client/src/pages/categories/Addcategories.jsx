@@ -42,7 +42,7 @@ function Addcategories() {
       };
 
      
-      const response = await axios.post('http://localhost:5000/api/category/addCategories', data, {
+      const response = await axios.post('https://product-listing-app.onrender.com/api/category/addCategories', data, {
         headers: {
           'Content-Type': 'application/json'
           

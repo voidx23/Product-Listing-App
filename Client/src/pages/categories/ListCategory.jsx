@@ -39,7 +39,7 @@ function ListCategory() {
     // Fetch categories from the server when the component mounts
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/category/getCategory');
+        const response = await axios.get('https://product-listing-app.onrender.com/api/category/getCategory');
 
         console.log(response.data,"list category")
         setCategories(response.data);

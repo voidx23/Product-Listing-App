@@ -10,7 +10,8 @@ function AddProducts() {
 
     useEffect(() => {
         // Fetch categories data from the server using Axios
-        axios.get('http://localhost:5000/api/category/getCategory')
+        // axios.get('http://localhost:5000/api/category/getCategory')
+        axios.get('https://product-listing-app.onrender.com/api/category/getCategory')
             .then(response => {
                 // Extract base child categories recursively
                 const extractBaseChildCategories = (categories) => {
@@ -46,7 +47,7 @@ function AddProducts() {
         };
     
         // Send the form data to the server using Axios
-        axios.post('http://localhost:5000/api/product/addProducts', formData)
+        axios.post('https://product-listing-app.onrender.com/api/product/addProducts', formData)
             .then(response => {
                
                 console.log('Product added successfully:', response.data);
