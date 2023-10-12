@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function ProductListing() {
@@ -8,6 +9,7 @@ function ProductListing() {
         axios.get('https://product-listing-app.onrender.com/api/product/getData')
             .then(response => {
                 setProducts(response.data.products);
+                console.log(response.data.products,"ajas")
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -16,12 +18,16 @@ function ProductListing() {
 
     return (
         <div className="container mx-auto my-8 p-8 bg-white shadow-lg rounded-lg">
+            <div className='flex justify-between'>
             <h2 className="text-2xl font-semibold mb-4">Product Listing</h2>
+            <Link className=' text-blue-600 font-extrabold' to={'/addProducts'}>Add Products</Link>
+            </div>
+           
             {products.map(product => (
                 <div key={product._id} className="mb-4">
-                    <h3 className="text-lg font-semibold">{product.productName}</h3>
-                    <p>Price: ${product.productPrice}</p>
-                    <p>Description: {product.productDescription}</p>
+                    <h3 className="text-lg font-semibold">{product.name}</h3>
+                    <p>Price: ${product.price}</p>
+                    <p>Description: {product.description}</p>
                 </div>
             ))}
         </div>
