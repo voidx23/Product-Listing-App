@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function AddProducts() {
+    const navigate = useNavigate();
     const [productName, setProductName] = useState('');
     const [productPrice, setProductPrice] = useState('');
     const [productDescription, setProductDescription] = useState('');
@@ -62,6 +64,8 @@ function AddProducts() {
         setProductPrice('');
         setProductDescription('');
         setSelectedCategory('');
+        navigate("/products");
+
     };
     
 
